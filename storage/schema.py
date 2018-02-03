@@ -357,7 +357,7 @@ player_tracking_passes_made = Table('player_tracking_passes_made', metadata,
     Column('FG3M', Integer),
     Column('FG3A', Integer),
     Column('FG3_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -382,7 +382,7 @@ player_tracking_passes_received = Table('player_tracking_passes_received', metad
     Column('FG3M', Integer),
     Column('FG3A', Integer),
     Column('FG3_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -527,7 +527,7 @@ sportvu_catch_shoot = Table('sportvu_catch_shoot', metadata,
     Column('CATCH_SHOOT_FG3A', DOUBLE),
     Column('CATCH_SHOOT_FG3_PCT', DOUBLE),
     Column('CATCH_SHOOT_EFG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -549,7 +549,7 @@ sportvu_catch_shoot_game_logs = Table('sportvu_catch_shoot_game_logs', metadata,
     Column('CATCH_SHOOT_FG3A', DOUBLE),
     Column('CATCH_SHOOT_FG3_PCT', DOUBLE),
     Column('CATCH_SHOOT_EFG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -569,7 +569,7 @@ sportvu_catch_shoot_team = Table('sportvu_catch_shoot_team', metadata,
     Column('CATCH_SHOOT_FG3A', DOUBLE),
     Column('CATCH_SHOOT_FG3_PCT', DOUBLE),
     Column('CATCH_SHOOT_EFG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -590,7 +590,7 @@ sportvu_catch_shoot_team_game_logs = Table('sportvu_catch_shoot_team_game_logs',
     Column('CATCH_SHOOT_FG3A', DOUBLE),
     Column('CATCH_SHOOT_FG3_PCT', DOUBLE),
     Column('CATCH_SHOOT_EFG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -609,7 +609,7 @@ sportvu_defense = Table('sportvu_defense', metadata,
     Column('DEF_RIM_FGM', DOUBLE),
     Column('DEF_RIM_FGA', DOUBLE),
     Column('DEF_RIM_FG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -629,7 +629,7 @@ sportvu_defense_game_logs = Table('sportvu_defense_game_logs', metadata,
     Column('DEF_RIM_FGM', DOUBLE),
     Column('DEF_RIM_FGA', DOUBLE),
     Column('DEF_RIM_FG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -647,7 +647,7 @@ sportvu_defense_team = Table('sportvu_defense_team', metadata,
     Column('DEF_RIM_FGM', DOUBLE),
     Column('DEF_RIM_FGA', DOUBLE),
     Column('DEF_RIM_FG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -666,7 +666,7 @@ sportvu_defense_team_game_logs = Table('sportvu_defense_team_game_logs', metadat
     Column('DEF_RIM_FGM', DOUBLE),
     Column('DEF_RIM_FGA', DOUBLE),
     Column('DEF_RIM_FG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -696,7 +696,7 @@ sportvu_drives = Table('sportvu_drives', metadata,
     Column('DRIVE_TOV_PCT', DOUBLE),
     Column('DRIVE_PF', DOUBLE),
     Column('DRIVE_PF_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -727,7 +727,7 @@ sportvu_drives_game_logs = Table('sportvu_drives_game_logs', metadata,
     Column('DRIVE_TOV_PCT', DOUBLE),
     Column('DRIVE_PF', DOUBLE),
     Column('DRIVE_PF_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -756,7 +756,7 @@ sportvu_drives_team = Table('sportvu_drives_team', metadata,
     Column('DRIVE_TOV_PCT', DOUBLE),
     Column('DRIVE_PF', DOUBLE),
     Column('DRIVE_PF_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -786,7 +786,7 @@ sportvu_drives_team_game_logs = Table('sportvu_drives_team_game_logs', metadata,
     Column('DRIVE_TOV_PCT', DOUBLE),
     Column('DRIVE_PF', DOUBLE),
     Column('DRIVE_PF_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -816,7 +816,7 @@ sportvu_elbow_touches = Table('sportvu_elbow_touches', metadata,
     Column('ELBOW_TOUCH_TOV_PCT', DOUBLE),
     Column('ELBOW_TOUCH_FOULS', DOUBLE),
     Column('ELBOW_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -847,7 +847,7 @@ sportvu_elbow_touches_game_logs = Table('sportvu_elbow_touches_game_logs', metad
     Column('ELBOW_TOUCH_TOV_PCT', DOUBLE),
     Column('ELBOW_TOUCH_FOULS', DOUBLE),
     Column('ELBOW_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -876,7 +876,7 @@ sportvu_elbow_touches_team = Table('sportvu_elbow_touches_team', metadata,
     Column('ELBOW_TOUCH_TOV_PCT', DOUBLE),
     Column('ELBOW_TOUCH_FOULS', DOUBLE),
     Column('ELBOW_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -906,7 +906,7 @@ sportvu_elbow_touches_team_game_logs = Table('sportvu_elbow_touches_team_game_lo
     Column('ELBOW_TOUCH_TOV_PCT', DOUBLE),
     Column('ELBOW_TOUCH_FOULS', DOUBLE),
     Column('ELBOW_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -936,7 +936,7 @@ sportvu_paint_touches = Table('sportvu_paint_touches', metadata,
     Column('PAINT_TOUCH_TOV_PCT', DOUBLE),
     Column('PAINT_TOUCH_FOULS', DOUBLE),
     Column('PAINT_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -967,7 +967,7 @@ sportvu_paint_touches_game_logs = Table('sportvu_paint_touches_game_logs', metad
     Column('PAINT_TOUCH_TOV_PCT', DOUBLE),
     Column('PAINT_TOUCH_FOULS', DOUBLE),
     Column('PAINT_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -996,7 +996,7 @@ sportvu_paint_touches_team = Table('sportvu_paint_touches_team', metadata,
     Column('PAINT_TOUCH_TOV_PCT', DOUBLE),
     Column('PAINT_TOUCH_FOULS', DOUBLE),
     Column('PAINT_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1026,7 +1026,7 @@ sportvu_paint_touches_team_game_logs = Table('sportvu_paint_touches_team_game_lo
     Column('PAINT_TOUCH_TOV_PCT', DOUBLE),
     Column('PAINT_TOUCH_FOULS', DOUBLE),
     Column('PAINT_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1049,7 +1049,7 @@ sportvu_passing = Table('sportvu_passing', metadata,
     Column('AST_ADJ', DOUBLE),
     Column('AST_TO_PASS_PCT', DOUBLE),
     Column('AST_TO_PASS_PCT_ADJ', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1073,7 +1073,7 @@ sportvu_passing_game_logs = Table('sportvu_passing_game_logs', metadata,
     Column('AST_ADJ', DOUBLE),
     Column('AST_TO_PASS_PCT', DOUBLE),
     Column('AST_TO_PASS_PCT_ADJ', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1095,7 +1095,7 @@ sportvu_passing_team = Table('sportvu_passing_team', metadata,
     Column('AST_ADJ', DOUBLE),
     Column('AST_TO_PASS_PCT', DOUBLE),
     Column('AST_TO_PASS_PCT_ADJ', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1118,7 +1118,7 @@ sportvu_passing_team_game_logs = Table('sportvu_passing_team_game_logs', metadat
     Column('AST_ADJ', DOUBLE),
     Column('AST_TO_PASS_PCT', DOUBLE),
     Column('AST_TO_PASS_PCT_ADJ', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1144,7 +1144,7 @@ sportvu_possessions = Table('sportvu_possessions', metadata,
     Column('PTS_PER_ELBOW_TOUCH', DOUBLE),
     Column('PTS_PER_POST_TOUCH', DOUBLE),
     Column('PTS_PER_PAINT_TOUCH', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1171,7 +1171,7 @@ sportvu_possessions_game_logs = Table('sportvu_possessions_game_logs', metadata,
     Column('PTS_PER_ELBOW_TOUCH', DOUBLE),
     Column('PTS_PER_POST_TOUCH', DOUBLE),
     Column('PTS_PER_PAINT_TOUCH', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1196,7 +1196,7 @@ sportvu_possessions_team = Table('sportvu_possessions_team', metadata,
     Column('PTS_PER_ELBOW_TOUCH', DOUBLE),
     Column('PTS_PER_POST_TOUCH', DOUBLE),
     Column('PTS_PER_PAINT_TOUCH', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1222,7 +1222,7 @@ sportvu_possessions_team_game_logs = Table('sportvu_possessions_team_game_logs',
     Column('PTS_PER_ELBOW_TOUCH', DOUBLE),
     Column('PTS_PER_POST_TOUCH', DOUBLE),
     Column('PTS_PER_PAINT_TOUCH', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1253,7 +1253,7 @@ sportvu_post_touches = Table('sportvu_post_touches', metadata,
     Column('POST_TOUCH_TOV_PCT', DOUBLE),
     Column('POST_TOUCH_FOULS', DOUBLE),
     Column('POST_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1285,7 +1285,7 @@ sportvu_post_touches_game_logs = Table('sportvu_post_touches_game_logs', metadat
     Column('POST_TOUCH_TOV_PCT', DOUBLE),
     Column('POST_TOUCH_FOULS', DOUBLE),
     Column('POST_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1315,7 +1315,7 @@ sportvu_post_touches_team = Table('sportvu_post_touches_team', metadata,
     Column('POST_TOUCH_TOV_PCT', DOUBLE),
     Column('POST_TOUCH_FOULS', DOUBLE),
     Column('POST_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1346,7 +1346,7 @@ sportvu_post_touches_team_game_logs = Table('sportvu_post_touches_team_game_logs
     Column('POST_TOUCH_TOV_PCT', DOUBLE),
     Column('POST_TOUCH_FOULS', DOUBLE),
     Column('POST_TOUCH_FOULS_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1367,7 +1367,7 @@ sportvu_pull_up_shoot = Table('sportvu_pull_up_shoot', metadata,
     Column('PULL_UP_FG3_PCT', DOUBLE),
     Column('PULL_UP_PTS', DOUBLE),
     Column('PULL_UP_EFG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1389,7 +1389,7 @@ sportvu_pull_up_shoot_game_logs = Table('sportvu_pull_up_shoot_game_logs', metad
     Column('PULL_UP_FG3_PCT', DOUBLE),
     Column('PULL_UP_PTS', DOUBLE),
     Column('PULL_UP_EFG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1409,7 +1409,7 @@ sportvu_pull_up_shoot_team = Table('sportvu_pull_up_shoot_team', metadata,
     Column('PULL_UP_FG3_PCT', DOUBLE),
     Column('PULL_UP_PTS', DOUBLE),
     Column('PULL_UP_EFG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1430,7 +1430,7 @@ sportvu_pull_up_shoot_team_game_logs = Table('sportvu_pull_up_shoot_team_game_lo
     Column('PULL_UP_FG3_PCT', DOUBLE),
     Column('PULL_UP_PTS', DOUBLE),
     Column('PULL_UP_EFG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1470,7 +1470,7 @@ sportvu_rebounding = Table('sportvu_rebounding', metadata,
     Column('REB_CHANCE_DEFER', DOUBLE),
     Column('REB_CHANCE_PCT_ADJ', DOUBLE),
     Column('AVG_REB_DIST', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1511,7 +1511,7 @@ sportvu_rebounding_game_logs = Table('sportvu_rebounding_game_logs', metadata,
     Column('REB_CHANCE_DEFER', DOUBLE),
     Column('REB_CHANCE_PCT_ADJ', DOUBLE),
     Column('AVG_REB_DIST', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1550,7 +1550,7 @@ sportvu_rebounding_team = Table('sportvu_rebounding_team', metadata,
     Column('REB_CHANCE_DEFER', DOUBLE),
     Column('REB_CHANCE_PCT_ADJ', DOUBLE),
     Column('AVG_REB_DIST', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1590,7 +1590,7 @@ sportvu_rebounding_team_game_logs = Table('sportvu_rebounding_team_game_logs', m
     Column('REB_CHANCE_DEFER', DOUBLE),
     Column('REB_CHANCE_PCT_ADJ', DOUBLE),
     Column('AVG_REB_DIST', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1617,7 +1617,7 @@ sportvu_shooting = Table('sportvu_shooting', metadata,
     Column('ELBOW_TOUCH_PTS', DOUBLE),
     Column('ELBOW_TOUCH_FG_PCT', DOUBLE),
     Column('EFF_FG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1645,7 +1645,7 @@ sportvu_shooting_game_logs = Table('sportvu_shooting_game_logs', metadata,
     Column('ELBOW_TOUCH_PTS', DOUBLE),
     Column('ELBOW_TOUCH_FG_PCT', DOUBLE),
     Column('EFF_FG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1671,7 +1671,7 @@ sportvu_shooting_team = Table('sportvu_shooting_team', metadata,
     Column('ELBOW_TOUCH_PTS', DOUBLE),
     Column('ELBOW_TOUCH_FG_PCT', DOUBLE),
     Column('EFF_FG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1698,7 +1698,7 @@ sportvu_shooting_team_game_logs = Table('sportvu_shooting_team_game_logs', metad
     Column('ELBOW_TOUCH_PTS', DOUBLE),
     Column('ELBOW_TOUCH_FG_PCT', DOUBLE),
     Column('EFF_FG_PCT', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1718,7 +1718,7 @@ sportvu_speed = Table('sportvu_speed', metadata,
     Column('AVG_SPEED', DOUBLE),
     Column('AVG_SPEED_OFF', DOUBLE),
     Column('AVG_SPEED_DEF', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1739,7 +1739,7 @@ sportvu_speed_game_logs = Table('sportvu_speed_game_logs', metadata,
     Column('AVG_SPEED', DOUBLE),
     Column('AVG_SPEED_OFF', DOUBLE),
     Column('AVG_SPEED_DEF', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1758,7 +1758,7 @@ sportvu_speed_team = Table('sportvu_speed_team', metadata,
     Column('AVG_SPEED', DOUBLE),
     Column('AVG_SPEED_OFF', DOUBLE),
     Column('AVG_SPEED_DEF', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1778,7 +1778,7 @@ sportvu_speed_team_game_logs = Table('sportvu_speed_team_game_logs', metadata,
     Column('AVG_SPEED', DOUBLE),
     Column('AVG_SPEED_OFF', DOUBLE),
     Column('AVG_SPEED_DEF', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1814,7 +1814,7 @@ synergy_cut_offense = Table('synergy_cut_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1845,7 +1845,7 @@ synergy_cut_team_offense = Table('synergy_cut_team_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1876,7 +1876,7 @@ synergy_cut_team_defense = Table('synergy_cut_team_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1912,7 +1912,7 @@ synergy_handoff_defense = Table('synergy_handoff_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1948,7 +1948,7 @@ synergy_handoff_offense = Table('synergy_handoff_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -1979,7 +1979,7 @@ synergy_handoff_team_offense = Table('synergy_handoff_team_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2010,7 +2010,7 @@ synergy_handoff_team_defense = Table('synergy_handoff_team_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2046,7 +2046,7 @@ synergy_isolation_defense = Table('synergy_isolation_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2082,7 +2082,7 @@ synergy_isolation_offense = Table('synergy_isolation_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2113,7 +2113,7 @@ synergy_isolation_team_offense = Table('synergy_isolation_team_offense', metadat
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2144,7 +2144,7 @@ synergy_isolation_team_defense = Table('synergy_isolation_team_defense', metadat
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2180,7 +2180,7 @@ synergy_misc_offense = Table('synergy_misc_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2211,7 +2211,7 @@ synergy_misc_team_offense = Table('synergy_misc_team_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2242,7 +2242,7 @@ synergy_misc_team_defense = Table('synergy_misc_team_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2278,7 +2278,7 @@ synergy_off_screen_defense = Table('synergy_off_screen_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2314,7 +2314,7 @@ synergy_off_screen_offense = Table('synergy_off_screen_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2345,7 +2345,7 @@ synergy_off_screen_team_offense = Table('synergy_off_screen_team_offense', metad
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2376,7 +2376,7 @@ synergy_off_screen_team_defense = Table('synergy_off_screen_team_defense', metad
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2412,7 +2412,7 @@ synergy_post_up_defense = Table('synergy_post_up_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2448,7 +2448,7 @@ synergy_post_up_offense = Table('synergy_post_up_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2479,7 +2479,7 @@ synergy_post_up_team_offense = Table('synergy_post_up_team_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2510,7 +2510,7 @@ synergy_post_up_team_defense = Table('synergy_post_up_team_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2546,7 +2546,7 @@ synergy_pr_ball_handler_defense = Table('synergy_pr_ball_handler_defense', metad
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2582,7 +2582,7 @@ synergy_pr_ball_handler_offense = Table('synergy_pr_ball_handler_offense', metad
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2613,7 +2613,7 @@ synergy_pr_ball_handler_team_offense = Table('synergy_pr_ball_handler_team_offen
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2644,7 +2644,7 @@ synergy_pr_ball_handler_team_defense = Table('synergy_pr_ball_handler_team_defen
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2680,7 +2680,7 @@ synergy_pr_roll_man_defense = Table('synergy_pr_roll_man_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2716,7 +2716,7 @@ synergy_pr_roll_man_offense = Table('synergy_pr_roll_man_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2747,7 +2747,7 @@ synergy_pr_roll_man_team_offense = Table('synergy_pr_roll_man_team_offense', met
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2778,7 +2778,7 @@ synergy_pr_roll_man_team_defense = Table('synergy_pr_roll_man_team_defense', met
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2814,7 +2814,7 @@ synergy_put_back_offense = Table('synergy_put_back_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2845,7 +2845,7 @@ synergy_put_back_team_offense = Table('synergy_put_back_team_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2876,7 +2876,7 @@ synergy_put_back_team_defense = Table('synergy_put_back_team_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2912,7 +2912,7 @@ synergy_spot_up_defense = Table('synergy_spot_up_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2948,7 +2948,7 @@ synergy_spot_up_offense = Table('synergy_spot_up_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -2979,7 +2979,7 @@ synergy_spot_up_team_offense = Table('synergy_spot_up_team_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -3010,7 +3010,7 @@ synergy_spot_up_team_defense = Table('synergy_spot_up_team_defense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -3046,7 +3046,7 @@ synergy_transition_offense = Table('synergy_transition_offense', metadata,
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -3077,7 +3077,7 @@ synergy_transition_team_offense = Table('synergy_transition_team_offense', metad
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 
@@ -3108,7 +3108,7 @@ synergy_transition_team_defense = Table('synergy_transition_team_defense', metad
     Column('SF', DOUBLE),
     Column('PlusOne', DOUBLE),
     Column('Score', DOUBLE),
-    Column('YEAR', primary_key=True),
+    Column('YEAR', Unicode(255), primary_key=True),
     Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
 )
 

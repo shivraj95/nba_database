@@ -50,7 +50,7 @@ def main():
     host = config['host']
     database = config['database']
 
-    engine = create_engine('mysql://'+username+':'+password+'@'+host+'/'+database)
+    engine = create_engine('mysql+pymysql:://'+username+':'+password+'@'+host+'/'+database)
     conn = engine.connect()
 
     store_stat(season, season_type, "Player", "CatchShoot", is_regular_season, schema.sportvu_catch_shoot, conn)

@@ -74,7 +74,7 @@ def main():
     password = config['password']
     host = config['host']
     database = config['database']
-    engine = create_engine('mysql://'+username+':'+password+'@'+host+'/'+database)
+    engine = create_engine('mysql+pymysql:://'+username+':'+password+'@'+host+'/'+database)
     conn = engine.connect()
 
     for dt in rrule(DAILY, dtstart=start_date, until=end_date):
