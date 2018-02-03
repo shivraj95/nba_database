@@ -1,4 +1,4 @@
-# Takes foure arguments: season,   start date, and end date. Date format YYYY-MM-DD. If no dates entered gets yesterday
+# Takes three arguments: season, start date, and end date. Date format YYYY-MM-DD. If no dates entered gets yesterday
 import json
 import sys
 import datetime
@@ -85,7 +85,7 @@ def main():
                 store_data(conn, schema.pbp, game_data.pbp())
                 store_data(conn, schema.player_tracking_boxscores, game_data.player_tracking_boxscore())
                 store_data(conn, schema.player_tracking_boxscores_team, game_data.player_tracking_boxscore_team())
-                #store_data(conn, schema.shots, game_data.shots())
+                store_data(conn, schema.shots, game_data.shots())
                 store_data(conn, schema.traditional_boxscores, game_data.traditional_boxscore())
                 store_data(conn, schema.traditional_boxscores_team, game_data.traditional_boxscore_team())
                 store_data(conn, schema.advanced_boxscores, game_data.advanced_boxscore())
