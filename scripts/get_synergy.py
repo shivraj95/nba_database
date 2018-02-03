@@ -1,4 +1,4 @@
-#Takes two arguments: Season (2014-2015) 
+#Takes one argument: Season (2014-2015) 
 
 import json
 import logging
@@ -55,56 +55,56 @@ def main():
 
     synergy_data = synergy_stats.SynergyData(season_type)
 
-    store_data(conn, utils.add_keys(synergy_data.transition_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_transition_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.transition_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_transition_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.transition_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_transition_offense)
+    store_data(conn, utils.add_keys(synergy_data.transition_team_offense(), season, is_regular_season), schema.synergy_transition_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.transition_team_defense(), season, is_regular_season), schema.synergy_transition_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.transition_offense(), season, is_regular_season), schema.synergy_transition_offense)
 
-    store_data(conn, utils.add_keys(synergy_data.isolation_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_isolation_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.isolation_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_isolation_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.isolation_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_isolation_offense)
-    store_data(conn, utils.add_keys(synergy_data.isolation_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_isolation_defense)
+    store_data(conn, utils.add_keys(synergy_data.isolation_team_offense(), season, is_regular_season), schema.synergy_isolation_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.isolation_team_defense(), season, is_regular_season), schema.synergy_isolation_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.isolation_offense(), season, is_regular_season), schema.synergy_isolation_offense)
+    store_data(conn, utils.add_keys(synergy_data.isolation_defense(), season, is_regular_season), schema.synergy_isolation_defense)
 
-    store_data(conn, utils.add_keys(synergy_data.pr_ball_handler_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_pr_ball_handler_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.pr_ball_handler_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_pr_ball_handler_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.pr_ball_handler_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_pr_ball_handler_offense)
-    store_data(conn, utils.add_keys(synergy_data.pr_ball_handler_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_pr_ball_handler_defense)
+    store_data(conn, utils.add_keys(synergy_data.pr_ball_handler_team_offense(), season, is_regular_season), schema.synergy_pr_ball_handler_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.pr_ball_handler_team_defense(), season, is_regular_season), schema.synergy_pr_ball_handler_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.pr_ball_handler_offense(), season, is_regular_season), schema.synergy_pr_ball_handler_offense)
+    store_data(conn, utils.add_keys(synergy_data.pr_ball_handler_defense(), season, is_regular_season), schema.synergy_pr_ball_handler_defense)
 
-    store_data(conn, utils.add_keys(synergy_data.pr_roll_man_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_pr_roll_man_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.pr_roll_man_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_pr_roll_man_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.pr_roll_man_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_pr_roll_man_offense)
-    store_data(conn, utils.add_keys(synergy_data.pr_roll_man_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_pr_roll_man_defense)
+    store_data(conn, utils.add_keys(synergy_data.pr_roll_man_team_offense(), season, is_regular_season), schema.synergy_pr_roll_man_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.pr_roll_man_team_defense(), season, is_regular_season), schema.synergy_pr_roll_man_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.pr_roll_man_offense(), season, is_regular_season), schema.synergy_pr_roll_man_offense)
+    store_data(conn, utils.add_keys(synergy_data.pr_roll_man_defense(), season, is_regular_season), schema.synergy_pr_roll_man_defense)
 
-    store_data(conn, utils.add_keys(synergy_data.post_up_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_post_up_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.post_up_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_post_up_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.post_up_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_post_up_offense)
-    store_data(conn, utils.add_keys(synergy_data.post_up_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_post_up_defense)
+    store_data(conn, utils.add_keys(synergy_data.post_up_team_offense(), season, is_regular_season), schema.synergy_post_up_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.post_up_team_defense(), season, is_regular_season), schema.synergy_post_up_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.post_up_offense(), season, is_regular_season), schema.synergy_post_up_offense)
+    store_data(conn, utils.add_keys(synergy_data.post_up_defense(), season, is_regular_season), schema.synergy_post_up_defense)
 
-    store_data(conn, utils.add_keys(synergy_data.spot_up_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_spot_up_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.spot_up_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_spot_up_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.spot_up_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_spot_up_offense)
-    store_data(conn, utils.add_keys(synergy_data.spot_up_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_spot_up_defense)
+    store_data(conn, utils.add_keys(synergy_data.spot_up_team_offense(), season, is_regular_season), schema.synergy_spot_up_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.spot_up_team_defense(), season, is_regular_season), schema.synergy_spot_up_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.spot_up_offense(), season, is_regular_season), schema.synergy_spot_up_offense)
+    store_data(conn, utils.add_keys(synergy_data.spot_up_defense(), season, is_regular_season), schema.synergy_spot_up_defense)
 
-    store_data(conn, utils.add_keys(synergy_data.handoff_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_handoff_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.handoff_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_handoff_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.handoff_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_handoff_offense)
-    store_data(conn, utils.add_keys(synergy_data.handoff_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_handoff_defense)
+    store_data(conn, utils.add_keys(synergy_data.handoff_team_offense(), season, is_regular_season), schema.synergy_handoff_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.handoff_team_defense(), season, is_regular_season), schema.synergy_handoff_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.handoff_offense(), season, is_regular_season), schema.synergy_handoff_offense)
+    store_data(conn, utils.add_keys(synergy_data.handoff_defense(), season, is_regular_season), schema.synergy_handoff_defense)
 
-    store_data(conn, utils.add_keys(synergy_data.cut_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_cut_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.cut_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_cut_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.cut_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_cut_offense)
+    store_data(conn, utils.add_keys(synergy_data.cut_team_offense(), season, is_regular_season), schema.synergy_cut_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.cut_team_defense(), season, is_regular_season), schema.synergy_cut_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.cut_offense(), season, is_regular_season), schema.synergy_cut_offense)
 
-    store_data(conn, utils.add_keys(synergy_data.off_screen_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_off_screen_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.off_screen_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_off_screen_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.off_screen_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_off_screen_offense)
-    store_data(conn, utils.add_keys(synergy_data.off_screen_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_off_screen_defense)
+    store_data(conn, utils.add_keys(synergy_data.off_screen_team_offense(), season, is_regular_season), schema.synergy_off_screen_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.off_screen_team_defense(), season, is_regular_season), schema.synergy_off_screen_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.off_screen_offense(), season, is_regular_season), schema.synergy_off_screen_offense)
+    store_data(conn, utils.add_keys(synergy_data.off_screen_defense(), season, is_regular_season), schema.synergy_off_screen_defense)
 
-    store_data(conn, utils.add_keys(synergy_data.put_back_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_put_back_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.put_back_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_put_back_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.put_back_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_put_back_offense)
+    store_data(conn, utils.add_keys(synergy_data.put_back_team_offense(), season, is_regular_season), schema.synergy_put_back_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.put_back_team_defense(), season, is_regular_season), schema.synergy_put_back_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.put_back_offense(), season, is_regular_season), schema.synergy_put_back_offense)
 
-    store_data(conn, utils.add_keys(synergy_data.misc_team_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_misc_team_offense)
-    store_data(conn, utils.add_keys(synergy_data.misc_team_defense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_misc_team_defense)
-    store_data(conn, utils.add_keys(synergy_data.misc_offense(), time.strftime("%Y-%m-%d"), is_regular_season), schema.synergy_misc_offense)
+    store_data(conn, utils.add_keys(synergy_data.misc_team_offense(), season, is_regular_season), schema.synergy_misc_team_offense)
+    store_data(conn, utils.add_keys(synergy_data.misc_team_defense(), season, is_regular_season), schema.synergy_misc_team_defense)
+    store_data(conn, utils.add_keys(synergy_data.misc_offense(), season, is_regular_season), schema.synergy_misc_offense)
 
 
 if __name__ == '__main__':

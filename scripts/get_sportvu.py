@@ -1,4 +1,4 @@
-#Takes two arguments: Season (2014-2015) and Is_regular_season
+#Takes two arguments: Season (2014-2015) 
 
 import json
 import logging
@@ -14,7 +14,7 @@ from scrape import sportvu_stats
 def store_stat(season, season_type, player_or_team, measure_type, is_regular_season, table, connection):
     try:
         stat_data = sportvu_stats.get_sportvu_data_for_stat(season, season_type, player_or_team, measure_type)
-        connection.execute(table.insert(replace_string=""), utils.add_keys(stat_data, time.strftime("%Y-%m-%d"), is_regular_season))
+        connection.execute(table.insert().values(utils.add_keys(stat_data, season, is_regular_season)))
     except:
         logging.error(utils.LogException())
     return None
@@ -23,13 +23,11 @@ def main():
     logging.basicConfig(filename='logs/sportvu.log',level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
     config=json.loads(open('config.json').read())
     season = None
-    is_regular_season = None
-    if len(sys.argv) != 2:
-        print("Must input 2 arguments. Enter a season and regular season flag")
+    if len(sys.argv) != 1:
+        print("Must input 1 argument. Enter a season. ")
         sys.exit(0)
     else:
         season = sys.argv[1]
-        is_regular_season = sys.argv[2]
     #season = config["season"]
     #is_regular_season = config["is_regular_season"]
     # make sure season is valid format
@@ -38,7 +36,7 @@ def main():
         print "Invalid Season format. Example format: 2014-15"
         sys.exit(0)
     year = season.split("-")[0]
-
+    is_regular_season = config['is_regular_season']
     if is_regular_season == 0:
         season_type = "Playoffs"
     elif is_regular_season == 1:

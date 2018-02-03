@@ -11,8 +11,8 @@ def LogException():
     return 'EXCEPTION IN ({}, LINE {} "{}"): {}'.format(filename, lineno, line.strip(), exc_obj)
 
 # function for adding keys to list of dictionaries
-def add_keys(data, date, is_regular_season):
+def add_keys(data, year, is_regular_season):
     for line in data:
-        line['DATE'] = date
         line['IS_REGULAR_SEASON'] = is_regular_season
+        line['YEAR'] = year
     return data
