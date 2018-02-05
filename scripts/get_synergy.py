@@ -13,7 +13,11 @@ from utils import utils
 
 def store_data(connection, is_team, playtype, scheme, table):
     try:
-        stat_data = synergy_stats.synergy_data_for_stat(is_team, playtype, scheme):
+        stat_data = synergy_stats.synergy_data_for_stat(is_team, playtype, scheme)
+        for dicts in stat_data:
+            dicts['FG_MG'] = dicks.pop('FGMG')
+            dicts['FG_M']  = dicks.pop('FGM')
+        
         connection.execute(table.insert().values(stat_data))
     except:
         logging.error(utils.LogException())

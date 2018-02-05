@@ -21,4 +21,4 @@ class SynergyData:
         if is_team:
             return helper.get_data_from_url_with_parameters_synergy(self.team_url, self.params)
         else:
-            helper.get_data_from_url_with_parameters_synergy(self.player_url, self.params)
+            return helper.get_data_from_url_with_parameters_synergy(self.player_url, self.params)
