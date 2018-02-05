@@ -33,7 +33,7 @@ def main():
     # make sure season is valid format
     season_pattern = re.compile('\d{4}[-]\d{2}$')
     if season_pattern.match(season) == None:
-        print "Invalid Season format. Example format: 2014-15"
+        print("Invalid Season format. Example format: 2014-15")
         sys.exit(0)
     year = season.split("-")[0]
     is_regular_season = config['is_regular_season']
@@ -42,7 +42,7 @@ def main():
     elif is_regular_season == 1:
         season_type = "Regular Season"
     else:
-        print "Invalid is_regular_season value. Use 0 for regular season, 1 for playoffs"
+        print("Invalid is_regular_season value. Use 0 for regular season, 1 for playoffs")
         sys.exit(0)
 
     username = config['username']
