@@ -1814,7 +1814,7 @@ synergy_cut_player = Table('synergy_cut_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -1846,7 +1846,7 @@ synergy_cut_team = Table('synergy_cut_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -1883,7 +1883,7 @@ synergy_handoff_player = Table('synergy_handoff_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -1916,7 +1916,7 @@ synergy_handoff_team = Table('synergy_handoff_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -1954,7 +1954,7 @@ synergy_isolation_player = Table('synergy_isolation_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -1987,7 +1987,7 @@ synergy_isolation_team = Table('synergy_isolation_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2024,7 +2024,7 @@ synergy_misc_player = Table('synergy_misc_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2056,7 +2056,7 @@ synergy_misc_team = Table('synergy_misc_team_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2093,7 +2093,7 @@ synergy_off_screen_player = Table('synergy_off_screen_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2125,7 +2125,7 @@ synergy_off_screen_team = Table('synergy_off_screen_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2162,7 +2162,7 @@ synergy_post_up_player = Table('synergy_post_up_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2195,7 +2195,7 @@ synergy_post_up_team = Table('synergy_post_up_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2233,7 +2233,7 @@ synergy_pr_ball_handler_player = Table('synergy_pr_ball_handler_player', metadat
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2265,7 +2265,7 @@ synergy_pr_ball_handler_team = Table('synergy_pr_ball_handler_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2303,7 +2303,7 @@ synergy_pr_roll_man_player = Table('synergy_pr_roll_man_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2335,7 +2335,7 @@ synergy_pr_roll_man_team = Table('synergy_pr_roll_man_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2372,7 +2372,7 @@ synergy_put_back_player = Table('synergy_put_back_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2404,7 +2404,7 @@ synergy_put_back_team= Table('synergy_put_back_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2442,7 +2442,7 @@ synergy_spot_up_player = Table('synergy_spot_up_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2475,7 +2475,7 @@ synergy_spot_up_team = Table('synergy_spot_up_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2513,7 +2513,7 @@ synergy_transition_player = Table('synergy_transition_player', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
@@ -2545,7 +2545,7 @@ synergy_transition_team = Table('synergy_transition_team', metadata,
     Column('Score', DOUBLE),
     Column('name', Unicode(255)),
     Column('season', Unicode(255)),
-    Column('seasonType'), 
+    Column('seasonType', Unicode(255)), 
     Column('FG_MG', DOUBLE),
     Column('FG_M', Integer)
 )
