@@ -15,7 +15,7 @@ class SynergyData:
         self.team_url = "https://stats-prod.nba.com/wp-json/statscms/v1/synergy/team"
         self.player_url = "https://stats-prod.nba.com/wp-json/statscms/v1/synergy/player"
 
-    def get_synergy_data_for_stat(is_team,playtype, scheme):
+    def get_synergy_data_for_stat(self, is_team, playtype, scheme):
         self.params['category'] = playtype
         self.params['names'] = scheme
         if is_team:

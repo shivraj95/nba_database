@@ -11,12 +11,12 @@ from scrape import synergy_stats
 from storage import schema
 from utils import utils
 
-def store_data(connection, is_team, playtype, scheme, table):
+def store_data(connection, is_team, playtype, scheme, synergy_data, table):
     try:
-        stat_data = synergy_stats.synergy_data_for_stat(is_team, playtype, scheme)
+        stat_data = synergy_data.get_synergy_data_for_stat(is_team, playtype, scheme)
         for dicts in stat_data:
-            dicts['FG_MG'] = dicks.pop('FGMG')
-            dicts['FG_M']  = dicks.pop('FGM')
+            dicts['FG_MG'] = dicts.pop('FGMG')
+            dicts['FG_M']  = dicts.pop('FGM')
         
         connection.execute(table.insert().values(stat_data))
     except:
@@ -34,7 +34,7 @@ def main():
         season = sys.argv[1]
     
     # make sure season is valid format
-    season_pattern = re.compile('\d{4}[-]\d{2}$')
+    season_pattern = re.compile('\d{4}')
     if season_pattern.match(season) == None:
         print("Invalid Season format. Example format: 2014-15")
         sys.exit(0)
@@ -55,69 +55,69 @@ def main():
     host = config['host']
     database = config['database']
 
-    engine = create_engine('mysql+pymysql:://'+username+':'+password+'@'+host+'/'+database)
+    engine = create_engine('mysql+pymysql://'+username+':'+password+'@'+host+'/'+database)
     conn = engine.connect()
 
     synergy_data = synergy_stats.SynergyData(season, season_type)
 
     
-    store_data(conn, 1, "Transition", "offensive", schema.synergy_transition_team)
-    store_data(conn, 1, "Transition",  "defensive", schema.synergy_transition_team)
-    store_data(conn, 0, "Transition", "offensive" schema.synergy_transition_player)
-    store_data(conn, 0, "Transition", "defensive" schema.synergy_transition_player)
+    store_data(conn, 1, "Transition", "offensive", synergy_data, schema.synergy_transition_team)
+    store_data(conn, 1, "Transition",  "defensive", synergy_data, schema.synergy_transition_team)
+    store_data(conn, 0, "Transition", "offensive", synergy_data, schema.synergy_transition_player)
+    store_data(conn, 0, "Transition", "defensive", synergy_data, schema.synergy_transition_player)
 
-    store_data(conn, 1, "Isolation", "offensive", schema.synergy_isolation_team)
-    store_data(conn, 1, "Isolation", "defensive", schema.synergy_isolation_team)
-    store_data(conn, 0, "Isolation", "offensive", schema.synergy_isolation_player)
-    store_data(conn, 0, "Isolation", "defensive",schema.synergy_isolation_player)
+    store_data(conn, 1, "Isolation", "offensive", synergy_data, schema.synergy_isolation_team)
+    store_data(conn, 1, "Isolation", "defensive", synergy_data, schema.synergy_isolation_team)
+    store_data(conn, 0, "Isolation", "offensive", synergy_data, schema.synergy_isolation_player)
+    store_data(conn, 0, "Isolation", "defensive", synergy_data, schema.synergy_isolation_player)
 
-    store_data(conn, 1, "PRBallHandler", "offensive", schema.synergy_pr_ball_handler_team)
-    store_data(conn, 1, "PRBallHandler", "defensive", schema.synergy_pr_ball_handler_team)
-    store_data(conn, 0, "PRBallHandler", "offensive", schema.synergy_pr_ball_handler_player)
-    store_data(conn, 0, "PRBallHandler", "defensive", schema.synergy_pr_ball_handler_player)
-
-
-    store_data(conn, 1, "PRRollMan", "offensive", schema.synergy_pr_roll_man_team)
-    store_data(conn, 1, "PRRollMan", "defensive", schema.synergy_pr_roll_man_team)
-    store_data(conn, 0, "PRRollMan", "offensive", schema.synergy_pr_roll_man_player)
-    store_data(conn, 0, "PRRollMan", "defensive", schema.synergy_pr_roll_man_player)
-
-    store_data(conn, 1, "Postup", "offensive", schema.synergy_post_up_team)
-    store_data(conn, 1, "Postup", "defensive", schema.synergy_post_up_team)
-    store_data(conn, 0, "Postup", "offensive", schema.synergy_post_up_player)
-    store_data(conn, 0, "Postup", "defensive", schema.synergy_post_up_player)
-
-    store_data(conn, 1, "Spotup", "offensive", schema.synergy_spot_up_team)
-    store_data(conn, 1, "Spotup", "defensive", schema.synergy_spot_up_team)
-    store_data(conn, 0, "Spotup", "offensive", schema.synergy_spot_up_player)
-    store_data(conn, 0, "Spotup", "defensive", schema.synergy_spot_up_player)
-
-    store_data(conn, 1, "Handoff", "offensive", schema.synergy_handoff_team)
-    store_data(conn, 1, "Handoff", "defensive", schema.synergy_handoff_team)
-    store_data(conn, 0, "Handoff", "offensive", schema.synergy_handoff_player)
-    store_data(conn, 0, "Handoff", "defensive", schema.synergy_handoff_player)
-
-    store_data(conn, 1, "Cut", "offensive", schema.synergy_cut_team)
-    store_data(conn, 1, "Cut", "defensive", schema.synergy_cut_team)
-    store_data(conn, 0, "Cut", "offensive", schema.synergy_cut_player)
-    store_data(conn, 0, "Cut", "defensive", schema.synergy_cut_player)
+    store_data(conn, 1, "PRBallHandler", "offensive", synergy_data, schema.synergy_pr_ball_handler_team)
+    store_data(conn, 1, "PRBallHandler", "defensive", synergy_data, schema.synergy_pr_ball_handler_team)
+    store_data(conn, 0, "PRBallHandler", "offensive", synergy_data, schema.synergy_pr_ball_handler_player)
+    store_data(conn, 0, "PRBallHandler", "defensive", synergy_data, schema.synergy_pr_ball_handler_player)
 
 
-    store_data(conn, 1, "Offscreen", "offensive", schema.synergy_off_screen_team)
-    store_data(conn, 1, "Offscreen", "defensive", schema.synergy_off_screen_team)
-    store_data(conn, 0, "Offscreen", "offensive", schema.synergy_off_screen_player)
-    store_data(conn, 0, "Offscreen", "defensive", schema.synergy_off_screen_player)
+    store_data(conn, 1, "PRRollMan", "offensive", synergy_data, schema.synergy_pr_roll_man_team)
+    store_data(conn, 1, "PRRollMan", "defensive", synergy_data, schema.synergy_pr_roll_man_team)
+    store_data(conn, 0, "PRRollMan", "offensive", synergy_data, schema.synergy_pr_roll_man_player)
+    store_data(conn, 0, "PRRollMan", "defensive", synergy_data, schema.synergy_pr_roll_man_player)
 
-    store_data(conn, 1, "Putback", "offensive", schema.synergy_put_back_team)
-    store_data(conn, 1, "Putback", "defensive", schema.synergy_put_back_team)
-    store_data(conn, 0, "Putback", "offensive", schema.synergy_put_back_player)
-    store_data(conn, 0, "Putback", "defensive", schema.synergy_put_back_player)
+    store_data(conn, 1, "Postup", "offensive", synergy_data, schema.synergy_post_up_team)
+    store_data(conn, 1, "Postup", "defensive", synergy_data, schema.synergy_post_up_team)
+    store_data(conn, 0, "Postup", "offensive", synergy_data, schema.synergy_post_up_player)
+    store_data(conn, 0, "Postup", "defensive", synergy_data, schema.synergy_post_up_player)
+
+    store_data(conn, 1, "Spotup", "offensive", synergy_data, schema.synergy_spot_up_team)
+    store_data(conn, 1, "Spotup", "defensive", synergy_data, schema.synergy_spot_up_team)
+    store_data(conn, 0, "Spotup", "offensive", synergy_data, schema.synergy_spot_up_player)
+    store_data(conn, 0, "Spotup", "defensive", synergy_data, schema.synergy_spot_up_player)
+
+    store_data(conn, 1, "Handoff", "offensive", synergy_data, schema.synergy_handoff_team)
+    store_data(conn, 1, "Handoff", "defensive", synergy_data, schema.synergy_handoff_team)
+    store_data(conn, 0, "Handoff", "offensive", synergy_data, schema.synergy_handoff_player)
+    store_data(conn, 0, "Handoff", "defensive", synergy_data, schema.synergy_handoff_player)
+
+    store_data(conn, 1, "Cut", "offensive", synergy_data, schema.synergy_cut_team)
+    store_data(conn, 1, "Cut", "defensive", synergy_data, schema.synergy_cut_team)
+    store_data(conn, 0, "Cut", "offensive", synergy_data, schema.synergy_cut_player)
+    store_data(conn, 0, "Cut", "defensive", synergy_data, schema.synergy_cut_player)
 
 
-    store_data(conn, 1, "Misc", "offensive", schema.synergy_misc_team)
-    store_data(conn, 1, "Misc", "defensive", schema.synergy_misc_team)
-    store_data(conn, 0, "Misc", "offensive", schema.synergy_misc_player)
-    store_data(conn, 0, "Misc", "defensive", schema.synergy_misc_player)
+    store_data(conn, 1, "Offscreen", "offensive", synergy_data, schema.synergy_off_screen_team)
+    store_data(conn, 1, "Offscreen", "defensive", synergy_data, schema.synergy_off_screen_team)
+    store_data(conn, 0, "Offscreen", "offensive", synergy_data, schema.synergy_off_screen_player)
+    store_data(conn, 0, "Offscreen", "defensive", synergy_data, schema.synergy_off_screen_player)
+
+    store_data(conn, 1, "Putback", "offensive", synergy_data, schema.synergy_put_back_team)
+    store_data(conn, 1, "Putback", "defensive", synergy_data, schema.synergy_put_back_team)
+    store_data(conn, 0, "Putback", "offensive", synergy_data, schema.synergy_put_back_player)
+    store_data(conn, 0, "Putback", "defensive", synergy_data, schema.synergy_put_back_player)
+
+
+    store_data(conn, 1, "Misc", "offensive", synergy_data, schema.synergy_misc_team)
+    store_data(conn, 1, "Misc", "defensive", synergy_data, schema.synergy_misc_team)
+    store_data(conn, 0, "Misc", "offensive", synergy_data, schema.synergy_misc_player)
+    store_data(conn, 0, "Misc", "defensive", synergy_data, schema.synergy_misc_player)
 
 
 

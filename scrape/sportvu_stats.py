@@ -1,6 +1,6 @@
 import json
 
-import helper
+from . import helper
 
 def get_sportvu_data_for_stat(season, season_type, player_or_team, measure_type, start_date="", end_date="", last_n_games=0, league_id="00", month=0, opponent_team_id=0, por_round=0, per_mode="Totals", team_id=0, outcome="", location="", season_segment="", vs_conference="", vs_division="", game_scope="", player_experience="", player_position="", starter_bench=""):
     parameters = {

@@ -13,7 +13,7 @@ def get_data_from_url_with_parameters(base_url, parameters, index):
     rows = data['resultSets'][index]['rowSet']
     return [dict(zip(headers, row)) for row in rows]
 def get_data_from_url_with_parameters_synergy(base_url, parameters):
-    return request.get(base_url, params=parameters, headers={'User-Agent': USER_AGENT}).json()['results']
+    return requests.get(base_url, params=parameters, headers={'User-Agent': USER_AGENT}).json()['results']
 
 def get_data_from_url_with_parameters_add_game_id(base_url, parameters, game_id, index):
     response = requests.get(base_url, params=parameters, headers={'User-Agent': USER_AGENT, 'referer': REFERER})
