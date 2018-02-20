@@ -19,6 +19,10 @@ def store_data(connection, is_team, playtype, scheme, synergy_data, table):
         for dicts in stat_data:
             dicts['FG_MG'] = dicts.pop('FGMG')
             dicts['FG_M']  = dicts.pop('FGM')
+            dicts['TEAM_ID'] = dicts.pop('TEAMDSIDS')
+        if ~is_team:
+            for dicts in stat_data:
+                dicts['PLAYER_ID'] = dicts.pop('PlayerIDSID')
         connection.execute(table.insert().values(stat_data))
     except:
         logging.error(utils.LogException())

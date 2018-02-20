@@ -80,143 +80,58 @@ class GameData:
         }
 
     def pbp(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.pbp_base_url, self.params, 0)
 
     def player_tracking_boxscore(self):
-        parameters = {"GameId": self.game_id}
+        
         return helper.get_data_from_url_with_parameters(self.player_tracking_boxscore_base_url, self.params, 0)
 
     def player_tracking_boxscore_team(self):
-        parameters = {"GameId": self.game_id}
         return helper.get_data_from_url_with_parameters(self.player_tracking_boxscore_base_url, self.params, 1)
 
     def traditional_boxscore(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.traditional_boxscore_base_url, self.params, 0)
 
     def traditional_boxscore_team(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.traditional_boxscore_base_url, self.params, 1)
 
     def advanced_boxscore(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.advanced_boxscore_base_url, self.params, 0)
 
     def advanced_boxscore_team(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.advanced_boxscore_base_url, self.params, 1)
 
     def scoring_boxscore(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.scoring_boxscore_base_url, self.params, 0)
 
     def scoring_boxscore_team(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.scoring_boxscore_base_url, self.params, 1)
 
     def misc_boxscore(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.misc_boxscore_base_url, self.params, 0)
 
     def misc_boxscore_team(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.misc_boxscore_base_url, self.params, 1)
 
     def usage_boxscore(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.usage_boxscore_base_url, self.params, 0)
 
     def four_factors_boxscore(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.four_factors_boxscore_base_url, self.params, 0)
 
     def four_factors_boxscore_team(self, start_period=0, end_period=10, range_type=2, start_range=0, end_range=55800):
-        parameters = {
-                        "GameId": self.game_id,
-                        "StartPeriod": start_period,
-                        "EndPeriod": end_period,
-                        "RangeType": range_type,
-                        "StartRange": start_range,
-                        "EndRange": end_range
-        }
+        
         return helper.get_data_from_url_with_parameters(self.four_factors_boxscore_base_url, self.params, 1)
 
     def shots(self):

@@ -179,7 +179,12 @@ other_stats = Table('other_stats', metadata,
     Column('PTS_FB', Integer),
     Column('LARGEST_LEAD', Integer),
     Column('TIMES_TIED', Integer),
-    Column('GAME_ID', Unicode(255), primary_key=True)
+    Column('GAME_ID', Unicode(255), primary_key=True), 
+    Column('TEAM_REBOUNDS', Integer), 
+    Column('TEAM_TURNOVERS', Integer),
+    Column('LEAD_CHANGES', Integer),
+    Column('PTS_OFF_TO', Integer),
+    Column('TOTAL_TURNOVERS', Integer),
 )
 
 pbp = Table('pbp', metadata,
@@ -286,7 +291,8 @@ player_tracking_boxscores_team = Table('player_tracking_boxscores_team', metadat
     Column('FG_PCT', DOUBLE),
     Column('DFGM', Integer),
     Column('DFGA', Integer),
-    Column('DFG_PCT', DOUBLE)
+    Column('DFG_PCT', DOUBLE), 
+    Column('TEAM_NAME', Unicode(255))
 )
 
 player_tracking_passes_made = Table('player_tracking_passes_made', metadata,
@@ -461,9 +467,10 @@ shots = Table('shots', metadata,
     Column('LOC_Y', Integer),
     Column('SHOT_ATTEMPTED_FLAG', TINYINT),
     Column('SHOT_MADE_FLAG', TINYINT), 
-    Column('GAME_DATE', Unicode(255), 
-    Column('GAME_DATE', Unicode(255),
-    Column('GAME_DATE', Unicode(255),
+    Column('GAME_DATE', Unicode(255)), 
+    Column('HTM', Unicode(255)),
+    Column('VTM', Unicode(255)), 
+    Column('SHOT_ZONE_RANGE', Unicode(255))
 )
 
 sportvu_catch_shoot = Table('sportvu_catch_shoot', metadata,
@@ -1739,12 +1746,12 @@ sportvu_speed_team_game_logs = Table('sportvu_speed_team_game_logs', metadata,
 )
 
 synergy_cut_player_offense = Table('synergy_cut_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -1777,12 +1784,12 @@ synergy_cut_player_offense = Table('synergy_cut_player_offense', metadata,
 
 
 synergy_cut_player_defense = Table('synergy_cut_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -1814,7 +1821,7 @@ synergy_cut_player_defense = Table('synergy_cut_player_defense', metadata,
 )
 
 synergy_cut_team_offense = Table('synergy_cut_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -1846,7 +1853,7 @@ synergy_cut_team_offense = Table('synergy_cut_team_offense', metadata,
 )
 
 synergy_cut_team_defense = Table('synergy_cut_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -1878,12 +1885,12 @@ synergy_cut_team_defense = Table('synergy_cut_team_defense', metadata,
 )
 
 synergy_handoff_player_offense = Table('synergy_handoff_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -1915,12 +1922,12 @@ synergy_handoff_player_offense = Table('synergy_handoff_player_offense', metadat
 )
 
 synergy_handoff_player_defense = Table('synergy_handoff_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Unicode(255), primary_key=True),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Unicode(255), primary_key=True),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -1952,7 +1959,7 @@ synergy_handoff_player_defense = Table('synergy_handoff_player_defense', metadat
 )
 
 synergy_handoff_team_offense = Table('synergy_handoff_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -1984,7 +1991,7 @@ synergy_handoff_team_offense = Table('synergy_handoff_team_offense', metadata,
 )
 
 synergy_handoff_team_defense = Table('synergy_handoff_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2017,12 +2024,12 @@ synergy_handoff_team_defense = Table('synergy_handoff_team_defense', metadata,
 
 
 synergy_isolation_player_offense = Table('synergy_isolation_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2054,12 +2061,12 @@ synergy_isolation_player_offense = Table('synergy_isolation_player_offense', met
 )
 
 synergy_isolation_player_defense = Table('synergy_isolation_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2091,7 +2098,7 @@ synergy_isolation_player_defense = Table('synergy_isolation_player_defense', met
 )
 
 synergy_isolation_team_offense = Table('synergy_isolation_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2123,7 +2130,7 @@ synergy_isolation_team_offense = Table('synergy_isolation_team_offense', metadat
 )
 
 synergy_isolation_team_defense = Table('synergy_isolation_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2155,12 +2162,12 @@ synergy_isolation_team_defense = Table('synergy_isolation_team_defense', metadat
 )
 
 synergy_misc_player_offense = Table('synergy_misc_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2192,12 +2199,12 @@ synergy_misc_player_offense = Table('synergy_misc_player_offense', metadata,
 )
 
 synergy_misc_player_defense = Table('synergy_misc_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2229,7 +2236,7 @@ synergy_misc_player_defense = Table('synergy_misc_player_defense', metadata,
 )
 
 synergy_misc_team_offense = Table('synergy_misc_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2261,7 +2268,7 @@ synergy_misc_team_offense = Table('synergy_misc_team_offense', metadata,
 )
 
 synergy_misc_team_defense = Table('synergy_misc_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2294,12 +2301,12 @@ synergy_misc_team_defense = Table('synergy_misc_team_defense', metadata,
 
 
 synergy_off_screen_player_offense = Table('synergy_off_screen_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2331,12 +2338,12 @@ synergy_off_screen_player_offense = Table('synergy_off_screen_player_offense', m
 )
 
 synergy_off_screen_player_defense = Table('synergy_off_screen_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2369,7 +2376,7 @@ synergy_off_screen_player_defense = Table('synergy_off_screen_player_defense', m
 
 
 synergy_off_screen_team_offense = Table('synergy_off_screen_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2401,7 +2408,7 @@ synergy_off_screen_team_offense = Table('synergy_off_screen_team_offense', metad
 )
 
 synergy_off_screen_team_defense = Table('synergy_off_screen_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2434,12 +2441,12 @@ synergy_off_screen_team_defense = Table('synergy_off_screen_team_defense', metad
 
 
 synergy_post_up_player_offense = Table('synergy_post_up_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2472,12 +2479,12 @@ synergy_post_up_player_offense = Table('synergy_post_up_player_offense', metadat
 
 
 synergy_post_up_player_defense = Table('synergy_post_up_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2509,7 +2516,7 @@ synergy_post_up_player_defense = Table('synergy_post_up_player_defense', metadat
 )
 
 synergy_post_up_team_offense = Table('synergy_post_up_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2541,7 +2548,7 @@ synergy_post_up_team_offense = Table('synergy_post_up_team_offense', metadata,
 )
 
 synergy_post_up_team_defense = Table('synergy_post_up_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2573,12 +2580,12 @@ synergy_post_up_team_defense = Table('synergy_post_up_team_defense', metadata,
 )
 
 synergy_pr_ball_handler_player_offense = Table('synergy_pr_ball_handler_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2610,12 +2617,12 @@ synergy_pr_ball_handler_player_offense = Table('synergy_pr_ball_handler_player_o
 )
 
 synergy_pr_ball_handler_player_defense = Table('synergy_pr_ball_handler_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2647,7 +2654,7 @@ synergy_pr_ball_handler_player_defense = Table('synergy_pr_ball_handler_player_d
 )
 
 synergy_pr_ball_handler_team_offense = Table('synergy_pr_ball_handler_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2680,7 +2687,7 @@ synergy_pr_ball_handler_team_offense = Table('synergy_pr_ball_handler_team_offen
 
 
 synergy_pr_ball_handler_team_defense = Table('synergy_pr_ball_handler_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2712,12 +2719,12 @@ synergy_pr_ball_handler_team_defense = Table('synergy_pr_ball_handler_team_defen
 )
 
 synergy_pr_roll_man_player_offense = Table('synergy_pr_roll_man_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2749,12 +2756,12 @@ synergy_pr_roll_man_player_offense = Table('synergy_pr_roll_man_player_offense',
 )
 
 synergy_pr_roll_man_player_defense = Table('synergy_pr_roll_man_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2786,7 +2793,7 @@ synergy_pr_roll_man_player_defense = Table('synergy_pr_roll_man_player_defense',
 )
 
 synergy_pr_roll_man_team_offense = Table('synergy_pr_roll_man_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2818,7 +2825,7 @@ synergy_pr_roll_man_team_offense = Table('synergy_pr_roll_man_team_offense', met
 )
 
 synergy_pr_roll_man_team_defense = Table('synergy_pr_roll_man_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2850,12 +2857,12 @@ synergy_pr_roll_man_team_defense = Table('synergy_pr_roll_man_team_defense', met
 )
 
 synergy_put_back_player_offense = Table('synergy_put_back_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2887,12 +2894,12 @@ synergy_put_back_player_offense = Table('synergy_put_back_player_offense', metad
 )
 
 synergy_put_back_player_defense = Table('synergy_put_back_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2925,7 +2932,7 @@ synergy_put_back_player_defense = Table('synergy_put_back_player_defense', metad
 
 
 synergy_put_back_team_offense = Table('synergy_put_back_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2957,7 +2964,7 @@ synergy_put_back_team_offense = Table('synergy_put_back_team_offense', metadata,
 )
 
 synergy_put_back_team_defense = Table('synergy_put_back_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -2990,12 +2997,12 @@ synergy_put_back_team_defense = Table('synergy_put_back_team_defense', metadata,
 
 
 synergy_spot_up_player_offense = Table('synergy_spot_up_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -3028,12 +3035,12 @@ synergy_spot_up_player_offense = Table('synergy_spot_up_player_offense', metadat
 
 
 synergy_spot_up_player_defense = Table('synergy_spot_up_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -3065,7 +3072,7 @@ synergy_spot_up_player_defense = Table('synergy_spot_up_player_defense', metadat
 )
 
 synergy_spot_up_team_offense = Table('synergy_spot_up_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -3098,7 +3105,7 @@ synergy_spot_up_team_offense = Table('synergy_spot_up_team_offense', metadata,
 
 
 synergy_spot_up_team_defense = Table('synergy_spot_up_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -3131,12 +3138,12 @@ synergy_spot_up_team_defense = Table('synergy_spot_up_team_defense', metadata,
 
 
 synergy_transition_player_offense = Table('synergy_transition_player_offense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -3168,12 +3175,12 @@ synergy_transition_player_offense = Table('synergy_transition_player_offense', m
 )
 
 synergy_transition_player_defense = Table('synergy_transition_player_defense', metadata,
-    Column('PlayerIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('PLAYER_ID', Integer, primary_key=True, autoincrement=False),
     Column('PlayerFirstName', Unicode(255)),
     Column('PlayerLastName', Unicode(255)),
     Column('PlayerNumber', Unicode(255)),
     Column('P', Unicode(255)),
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -3205,7 +3212,7 @@ synergy_transition_player_defense = Table('synergy_transition_player_defense', m
 )
 
 synergy_transition_team_offense = Table('synergy_transition_team_offense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
@@ -3238,7 +3245,7 @@ synergy_transition_team_offense = Table('synergy_transition_team_offense', metad
 
 
 synergy_transition_team_defense = Table('synergy_transition_team_defense', metadata,
-    Column('TEAMIDSID', Integer, primary_key=True, autoincrement=False),
+    Column('TEAM_ID', Integer, primary_key=True, autoincrement=False),
     Column('TeamName', Unicode(255)),
     Column('TeamNameAbbreviation', Unicode(255)),
     Column('TeamShortName', Unicode(255)),
