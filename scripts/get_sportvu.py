@@ -1,4 +1,4 @@
-#Takes two arguments: Season (2014-2015) 
+#Takes two arguments: Season (2014-15) 
 
 import json
 import logging
@@ -20,10 +20,10 @@ def store_stat(season, season_type, player_or_team, measure_type, is_regular_sea
     return None
 
 def main():
-    logging.basicConfig(filename='logs/sportvu.log',level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+    #logging.basicConfig(filename='logs/sportvu.log',level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
     config=json.loads(open('config.json').read())
     season = None
-    if len(sys.argv) != 1:
+    if len(sys.argv) < 2:
         print("Must input 1 argument. Enter a season. ")
         sys.exit(0)
     else:
@@ -36,6 +36,7 @@ def main():
         print("Invalid Season format. Example format: 2014-15")
         sys.exit(0)
     year = season.split("-")[0]
+    
     is_regular_season = config['is_regular_season']
     if is_regular_season == 0:
         season_type = "Playoffs"

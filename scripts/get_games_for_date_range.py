@@ -74,7 +74,7 @@ def main():
     password = config['password']
     host = config['host']
     database = config['database']
-    engine = create_engine('mysql+pymysql:://'+username+':'+password+'@'+host+'/'+database)
+    engine = create_engine('mysql+pymysql://'+username+':'+password+'@'+host+'/'+database)
     conn = engine.connect()
 
     for dt in rrule(DAILY, dtstart=start_date, until=end_date):
@@ -97,10 +97,10 @@ def main():
                 store_data(conn, schema.usage_boxscores, game_data.usage_boxscore())
                 store_data(conn, schema.four_factors_boxscores, game_data.four_factors_boxscore())
                 store_data(conn, schema.four_factors_boxscores_team, game_data.four_factors_boxscore_team())
-                store_data(conn, schema.line_score, game_data.line_score())
                 store_data(conn, schema.other_stats, game_data.other_stats())
                 store_data(conn, schema.officials, game_data.officials())
                 store_data(conn, schema.inactives, game_data.inactives())
+
 
 
 if __name__ == '__main__':

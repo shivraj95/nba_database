@@ -1,7 +1,7 @@
 import json
 import requests
 
-USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/47.0.2526.73 Chrome/47.0.2526.73 Safari/537.36"
+USER_AGENT = "Mozilla/5.0"
 REFERER = "http://stats.nba.com/scores/"
 
 def get_data_from_url_with_parameters(base_url, parameters, index):
