@@ -2,33 +2,39 @@ import json
 
 from . import helper
 
-def get_sportvu_data_for_stat(season, season_type, player_or_team, measure_type, start_date="", end_date="", last_n_games=0, league_id="00", month=0, opponent_team_id=0, por_round=0, per_mode="Totals", team_id=0, outcome="", location="", season_segment="", vs_conference="", vs_division="", game_scope="", player_experience="", player_position="", starter_bench=""):
-    parameters = {
-                    "DateFrom": start_date,
-                    "DateTo": end_date,
-                    "PlayerOrTeam": player_or_team,
-                    "PtMeasureType": measure_type,
-                    "Season": season,
-                    "SeasonType": season_type,
-                    "LastNGames": last_n_games,
-                    "LeagueID": league_id,
-                    "Month": month,
-                    "OpponentTeamID": opponent_team_id,
-                    "PORound": por_round,
-                    "PerMode": per_mode,
-                    "TeamID": team_id,
-                    "Outcome": outcome,
-                    "Location": location,
-                    "SeasonSegment": season_segment,
-                    "VsConference": vs_conference,
-                    "VsDivision": vs_division,
-                    "GameScope": game_scope,
-                    "PlayerExperience": player_experience,
-                    "PlayerPosition": player_position,
-                    "StarterBench": starter_bench
-    }
-    base_url = "http://stats.nba.com/stats/leaguedashptstats"
-    return helper.get_data_from_url_with_parameters(base_url, parameters, 0)
+class SportsVuData:
+    def __init__(self, season, season_type, start_date="", end_date="", last_n_games=0, league_id="00", month=0, opponent_team_id=0, por_round=0, per_mode="Totals", team_id=0, outcome="", location="", season_segment="", vs_conference="", vs_division="", game_scope="", player_experience="", player_position="", starter_bench=""):
+
+        self.parameters = {
+                        "DateFrom": start_date,
+                        "DateTo": end_date,
+                        "PlayerOrTeam": "",
+                        "PtMeasureType": "",
+                        "Season": season,
+                        "SeasonType": season_type,
+                        "LastNGames": last_n_games,
+                        "LeagueID": league_id,
+                        "Month": month,
+                        "OpponentTeamID": opponent_team_id,
+                        "PORound": por_round,
+                        "PerMode": per_mode,
+                        "TeamID": team_id,
+                        "Outcome": outcome,
+                        "Location": location,
+                        "SeasonSegment": season_segment,
+                        "VsConference": vs_conference,
+                        "VsDivision": vs_division,
+                        "GameScope": game_scope,
+                        "PlayerExperience": player_experience,
+                        "PlayerPosition": player_position,
+                        "StarterBench": starter_bench
+        }
+        self.base_url = "http://stats.nba.com/stats/leaguedashptstats"
+
+    def get_sportvu_data_for_stat(self, player_or_team, measure_type):
+        self.parameters['PlayerOrTeam'] = player_or_team
+        self.parameters['PtMeasureType'] = measure_type
+        return helper.get_data_from_url_with_parameters(self.base_url, self.parameters, 0)
 
 def add_game_id_to_game_log_for_player(daily_data, date, game_ids, player_game_map):
     to_return = []

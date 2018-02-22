@@ -11,9 +11,11 @@ from utils import utils
 from storage import schema
 from scrape import sportvu_stats
 
-def store_stat(season, season_type, player_or_team, measure_type, is_regular_season, table, connection):
+def store_stat(sportsVu, season, player_or_team, measure_type, is_regular_season, table, connection):
     try:
-        stat_data = sportvu_stats.get_sportvu_data_for_stat(season, season_type, player_or_team, measure_type)
+        stat_data = sportsVu.get_sportvu_data_for_stat(player_or_team, measure_type)
+        if stat_data is None:
+            return None
         connection.execute(table.insert().values(utils.add_keys(stat_data, season, is_regular_season)))
     except:
         logging.error(utils.LogException())
@@ -54,30 +56,32 @@ def main():
     engine = create_engine('mysql+pymysql://'+username+':'+password+'@'+host+'/'+database)
     conn = engine.connect()
 
-    store_stat(season, season_type, "Player", "CatchShoot", is_regular_season, schema.sportvu_catch_shoot, conn)
-    store_stat(season, season_type, "Team", "CatchShoot", is_regular_season, schema.sportvu_catch_shoot_team, conn)
-    store_stat(season, season_type, "Player", "Defense", is_regular_season, schema.sportvu_defense, conn)
-    store_stat(season, season_type, "Team", "Defense", is_regular_season, schema.sportvu_defense_team, conn)
-    store_stat(season, season_type, "Player", "Drives", is_regular_season, schema.sportvu_drives, conn)
-    store_stat(season, season_type, "Team", "Drives", is_regular_season, schema.sportvu_drives_team, conn)
-    store_stat(season, season_type, "Player", "Passing", is_regular_season, schema.sportvu_passing, conn)
-    store_stat(season, season_type, "Team", "Passing", is_regular_season, schema.sportvu_passing_team, conn)
-    store_stat(season, season_type, "Player", "PullUpShot", is_regular_season, schema.sportvu_pull_up_shoot, conn)
-    store_stat(season, season_type, "Team", "PullUpShot", is_regular_season, schema.sportvu_pull_up_shoot_team, conn)
-    store_stat(season, season_type, "Player", "Rebounding", is_regular_season, schema.sportvu_rebounding, conn)
-    store_stat(season, season_type, "Team", "Rebounding", is_regular_season, schema.sportvu_rebounding_team, conn)
-    store_stat(season, season_type, "Player", "Efficiency", is_regular_season, schema.sportvu_shooting, conn)
-    store_stat(season, season_type, "Team", "Efficiency", is_regular_season, schema.sportvu_shooting_team, conn)
-    store_stat(season, season_type, "Player", "SpeedDistance", is_regular_season, schema.sportvu_speed, conn)
-    store_stat(season, season_type, "Team", "SpeedDistance", is_regular_season, schema.sportvu_speed_team, conn)
-    store_stat(season, season_type, "Player", "ElbowTouch", is_regular_season, schema.sportvu_elbow_touches, conn)
-    store_stat(season, season_type, "Team", "ElbowTouch", is_regular_season, schema.sportvu_elbow_touches_team, conn)
-    store_stat(season, season_type, "Player", "PaintTouch", is_regular_season, schema.sportvu_paint_touches, conn)
-    store_stat(season, season_type, "Team", "PaintTouch", is_regular_season, schema.sportvu_paint_touches_team, conn)
-    store_stat(season, season_type, "Player", "PostTouch", is_regular_season, schema.sportvu_post_touches, conn)
-    store_stat(season, season_type, "Team", "PostTouch", is_regular_season, schema.sportvu_post_touches_team, conn)
-    store_stat(season, season_type, "Player", "Possessions", is_regular_season, schema.sportvu_possessions, conn)
-    store_stat(season, season_type, "Team", "Possessions", is_regular_season, schema.sportvu_possessions_team, conn)
+    sportsVu = sportvu_stats.SportsVuData(season, season_type)
+
+    store_stat(sportsVu, season, "Player", "CatchShoot", is_regular_season, schema.sportvu_catch_shoot, conn)
+    store_stat(sportsVu, season, "Team", "CatchShoot", is_regular_season, schema.sportvu_catch_shoot_team, conn)
+    store_stat(sportsVu, season, "Player", "Defense", is_regular_season, schema.sportvu_defense, conn)
+    store_stat(sportsVu, season, "Team", "Defense", is_regular_season, schema.sportvu_defense_team, conn)
+    store_stat(sportsVu, season, "Player", "Drives", is_regular_season, schema.sportvu_drives, conn)
+    store_stat(sportsVu, season, "Team", "Drives", is_regular_season, schema.sportvu_drives_team, conn)
+    store_stat(sportsVu, season, "Player", "Passing", is_regular_season, schema.sportvu_passing, conn)
+    store_stat(sportsVu, season, "Team", "Passing", is_regular_season, schema.sportvu_passing_team, conn)
+    store_stat(sportsVu, season, "Player", "PullUpShot", is_regular_season, schema.sportvu_pull_up_shoot, conn)
+    store_stat(sportsVu, season, "Team", "PullUpShot", is_regular_season, schema.sportvu_pull_up_shoot_team, conn)
+    store_stat(sportsVu, season, "Player", "Rebounding", is_regular_season, schema.sportvu_rebounding, conn)
+    store_stat(sportsVu, season, "Team", "Rebounding", is_regular_season, schema.sportvu_rebounding_team, conn)
+    store_stat(sportsVu, season, "Player", "Efficiency", is_regular_season, schema.sportvu_shooting, conn)
+    store_stat(sportsVu, season, "Team", "Efficiency", is_regular_season, schema.sportvu_shooting_team, conn)
+    store_stat(sportsVu, season, "Player", "SpeedDistance", is_regular_season, schema.sportvu_speed, conn)
+    store_stat(sportsVu, season, "Team", "SpeedDistance", is_regular_season, schema.sportvu_speed_team, conn)
+    store_stat(sportsVu, season, "Player", "ElbowTouch", is_regular_season, schema.sportvu_elbow_touches, conn)
+    store_stat(sportsVu, season, "Team", "ElbowTouch", is_regular_season, schema.sportvu_elbow_touches_team, conn)
+    store_stat(sportsVu, season, "Player", "PaintTouch", is_regular_season, schema.sportvu_paint_touches, conn)
+    store_stat(sportsVu, season, "Team", "PaintTouch", is_regular_season, schema.sportvu_paint_touches_team, conn)
+    store_stat(sportsVu, season, "Player", "PostTouch", is_regular_season, schema.sportvu_post_touches, conn)
+    store_stat(sportsVu, season, "Team", "PostTouch", is_regular_season, schema.sportvu_post_touches_team, conn)
+    store_stat(sportsVu, season, "Player", "Possessions", is_regular_season, schema.sportvu_possessions, conn)
+    store_stat(sportsVu, season, "Team", "Possessions", is_regular_season, schema.sportvu_possessions_team, conn)
 
 if __name__ == '__main__':
     main()

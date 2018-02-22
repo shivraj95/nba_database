@@ -19,13 +19,15 @@ def store_data(connection, is_team, playtype, scheme, synergy_data, table):
         for dicts in stat_data:
             dicts['FG_MG'] = dicts.pop('FGMG')
             dicts['FG_M']  = dicts.pop('FGM')
-            dicts['TEAM_ID'] = dicts.pop('TEAMDSIDS')
-        if ~is_team:
+            dicts['TEAM_ID'] = dicts.pop('TeamIDSID')
+        if is_team == 0:
             for dicts in stat_data:
                 dicts['PLAYER_ID'] = dicts.pop('PlayerIDSID')
+        
         connection.execute(table.insert().values(stat_data))
     except:
         logging.error(utils.LogException())
+    
     return None
 
 def main():
@@ -39,18 +41,18 @@ def main():
         season = sys.argv[1]
     
     # make sure season is valid format
-    season_pattern = re.compile('\d{4}')
+    season_pattern = re.compile('^\d{4}')
     if season_pattern.match(season) == None:
-        print("Invalid Season format. Example format: 2014-15")
+        print("Invalid Season format. Example format: 2015")
         sys.exit(0)
     year = season.split("-")[0]
 
     is_regular_season = config['is_regular_season']
 
     if is_regular_season == 0:
-        season_type = "_post"
+        season_type = "Post"
     elif is_regular_season == 1:
-        season_type = ""
+        season_type = "Reg"
     else:
         print("Invalid is_regular_season value. Use 0 for regular season, 1 for playoffs")
 
@@ -111,9 +113,9 @@ def main():
     store_data(conn, 0, "Offscreen", "offensive", synergy_data, schema.synergy_off_screen_player_offense)
     store_data(conn, 0, "Offscreen", "defensive", synergy_data, schema.synergy_off_screen_player_defense)
 
-    store_data(conn, 1, "Putback", "offensive", synergy_data, schema.synergy_put_back_team_offense)
-    store_data(conn, 1, "Putback", "defensive", synergy_data, schema.synergy_put_back_team_defense)
-    store_data(conn, 0, "Putback", "offensive", synergy_data, schema.synergy_put_back_player_offense)
+    store_data(conn, 1, "OffRebound", "offensive", synergy_data, schema.synergy_put_back_team_offense)
+    store_data(conn, 1, "OffRebound", "defensive", synergy_data, schema.synergy_put_back_team_defense)
+    store_data(conn, 0, "OffRebound", "offensive", synergy_data, schema.synergy_put_back_player_offense)
 
 
     store_data(conn, 1, "Misc", "offensive", synergy_data, schema.synergy_misc_team_offense)
