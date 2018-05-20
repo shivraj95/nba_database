@@ -3,21 +3,15 @@ from sqlalchemy.dialects.mysql import DOUBLE, TINYINT
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.sql.expression import Insert
 
-# use replace into to avoid duplicate primary key errors
-@compiles(Insert)
-def replace_string(insert, compiler, **kw):
-    s = compiler.visit_insert(insert, **kw)
-    s = s.replace("INSERT INTO", "REPLACE INTO")
-    return s
 
 metadata = MetaData()
 
 advanced_boxscores = Table('advanced_boxscores', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255)),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('START_POSITION', Unicode(255)),
     Column('COMMENT', Unicode(255)),
@@ -40,8 +34,8 @@ advanced_boxscores = Table('advanced_boxscores', metadata,
 )
 
 advanced_boxscores_team = Table('advanced_boxscores_team', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255), primary_key=True),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_NAME', Unicode(255)),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
@@ -64,11 +58,11 @@ advanced_boxscores_team = Table('advanced_boxscores_team', metadata,
 )
 
 four_factors_boxscores = Table('four_factors_boxscores', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255)),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('START_POSITION', Unicode(255)),
     Column('COMMENT', Unicode(255)),
@@ -84,8 +78,8 @@ four_factors_boxscores = Table('four_factors_boxscores', metadata,
 )
 
 four_factors_boxscores_team = Table('four_factors_boxscores_team', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255), primary_key=True),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_NAME', Unicode(255)),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
@@ -103,24 +97,24 @@ four_factors_boxscores_team = Table('four_factors_boxscores_team', metadata,
 
 
 inactives = Table('inactives', metadata,
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Unicode(255)),
     Column('FIRST_NAME', Unicode(255)),
     Column('LAST_NAME', Unicode(255)),
     Column('JERSEY_NUM', Unicode(255)),
-    Column('TEAM_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_CITY', Unicode(255)),
     Column('TEAM_NAME', Unicode(255)),
     Column('TEAM_ABBREVIATION', Unicode(255)),
-    Column('GAME_ID', Unicode(255), primary_key=True)
+    Column('GAME_ID', Unicode(255))
 )
 
 
 misc_boxscores = Table('misc_boxscores', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255)),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('START_POSITION', Unicode(255)),
     Column('COMMENT', Unicode(255)),
@@ -140,8 +134,8 @@ misc_boxscores = Table('misc_boxscores', metadata,
 )
 
 misc_boxscores_team = Table('misc_boxscores_team', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255), primary_key=True),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_NAME', Unicode(255)),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
@@ -161,17 +155,16 @@ misc_boxscores_team = Table('misc_boxscores_team', metadata,
 )
 
 officials = Table('officials', metadata,
-    Column('OFFICIAL_ID', Unicode(255), primary_key=True),
+    Column('OFFICIAL_ID', Unicode(255)),
     Column('FIRST_NAME', Unicode(255)),
     Column('LAST_NAME', Unicode(255)),
     Column('JERSEY_NUM', Integer),
-    Column('GAME_ID', Unicode(255), primary_key=True)
+    Column('GAME_ID', Unicode(255))
 )
 
 other_stats = Table('other_stats', metadata,
     Column('LEAGUE_ID', Unicode(255)),
-    Column('SEASON_ID', Unicode(255)),
-    Column('TEAM_ID', Unicode(255), primary_key=True),
+    Column('TEAM_ID', Integer),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
     Column('PTS_PAINT', Integer),
@@ -179,7 +172,7 @@ other_stats = Table('other_stats', metadata,
     Column('PTS_FB', Integer),
     Column('LARGEST_LEAD', Integer),
     Column('TIMES_TIED', Integer),
-    Column('GAME_ID', Unicode(255), primary_key=True), 
+    Column('GAME_ID', Unicode(255)), 
     Column('TEAM_REBOUNDS', Integer), 
     Column('TEAM_TURNOVERS', Integer),
     Column('LEAD_CHANGES', Integer),
@@ -188,8 +181,8 @@ other_stats = Table('other_stats', metadata,
 )
 
 pbp = Table('pbp', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('EVENTNUM', Integer, primary_key=True, autoincrement=False),
+    Column('GAME_ID', Unicode(255)),
+    Column('EVENTNUM', Integer, autoincrement=False),
     Column('EVENTMSGTYPE', Integer),
     Column('EVENTMSGACTIONTYPE', Integer),
     Column('PERIOD', Integer),
@@ -220,25 +213,15 @@ pbp = Table('pbp', metadata,
     Column('PLAYER3_TEAM_ID', Unicode(255)),
     Column('PLAYER3_TEAM_CITY', Unicode(255)),
     Column('PLAYER3_TEAM_NICKNAME', Unicode(255)),
-    Column('PLAYER3_TEAM_ABBREVIATION', Unicode(255)),
-    Column('HOME_PLAYER1', Unicode(255)),
-    Column('HOME_PLAYER2', Unicode(255)),
-    Column('HOME_PLAYER3', Unicode(255)),
-    Column('HOME_PLAYER4', Unicode(255)),
-    Column('HOME_PLAYER5', Unicode(255)),
-    Column('VISITOR_PLAYER1', Unicode(255)),
-    Column('VISITOR_PLAYER2', Unicode(255)),
-    Column('VISITOR_PLAYER3', Unicode(255)),
-    Column('VISITOR_PLAYER4', Unicode(255)),
-    Column('VISITOR_PLAYER5', Unicode(255))
+    Column('PLAYER3_TEAM_ABBREVIATION', Unicode(255))
 )
 
 player_tracking_boxscores = Table('player_tracking_boxscores', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255)),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('START_POSITION', Unicode(255)),
     Column('COMMENT', Unicode(255)),
@@ -266,13 +249,11 @@ player_tracking_boxscores = Table('player_tracking_boxscores', metadata,
 )
 
 player_tracking_boxscores_team = Table('player_tracking_boxscores_team', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255), primary_key=True),
-    Column('TEAM_NICKNAME', Unicode(255)),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
     Column('MIN', Unicode(255)),
-    Column('SPD', DOUBLE),
     Column('DIST', DOUBLE),
     Column('ORBC', Integer),
     Column('DRBC', Integer),
@@ -396,11 +377,11 @@ player_tracking_shot_logs = Table('player_tracking_shot_logs', metadata,
 )
 
 scoring_boxscores = Table('scoring_boxscores', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
+    Column('GAME_ID', Unicode(255)),
     Column('TEAM_ID', Unicode(255)),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('START_POSITION', Unicode(255)),
     Column('COMMENT', Unicode(255)),
@@ -423,8 +404,8 @@ scoring_boxscores = Table('scoring_boxscores', metadata,
 )
 
 scoring_boxscores_team = Table('scoring_boxscores_team', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255), primary_key=True),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Unicode(255)),
     Column('TEAM_NAME', Unicode(255)),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
@@ -448,8 +429,8 @@ scoring_boxscores_team = Table('scoring_boxscores_team', metadata,
 
 shots = Table('shots', metadata,
     Column('GRID_TYPE', Unicode(255)),
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('GAME_EVENT_ID', Integer, primary_key=True, autoincrement=False),
+    Column('GAME_ID', Unicode(255)),
+    Column('GAME_EVENT_ID', Integer),
     Column('PLAYER_ID', Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('TEAM_ID', Unicode(255)),
@@ -474,10 +455,10 @@ shots = Table('shots', metadata,
 )
 
 sportvu_catch_shoot = Table('sportvu_catch_shoot', metadata,
-    Column('PLAYER_ID',Unicode(255), primary_key=True),
+    Column('PLAYER_ID',Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('TEAM_ID', Unicode(255)),
-    Column('TEAM_ABBREVIATION', Unicode(255), primary_key=True),
+    Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('GP', Integer),
     Column('W', Integer),
     Column('L', Integer),
@@ -490,15 +471,15 @@ sportvu_catch_shoot = Table('sportvu_catch_shoot', metadata,
     Column('CATCH_SHOOT_FG3A', DOUBLE),
     Column('CATCH_SHOOT_FG3_PCT', DOUBLE),
     Column('CATCH_SHOOT_EFG_PCT', DOUBLE),
-    Column('YEAR', Unicode(255), primary_key=True),
-    Column('IS_REGULAR_SEASON', TINYINT, primary_key=True, autoincrement=False)
+    Column('YEAR', Unicode(255)),
+    Column('IS_REGULAR_SEASON', TINYINT, autoincrement=False)
 )
 
 sportvu_catch_shoot_game_logs = Table('sportvu_catch_shoot_game_logs', metadata,
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('TEAM_ID', Unicode(255)),
-    Column('TEAM_ABBREVIATION', Unicode(255), primary_key=True),
+    Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('GAME_ID', Unicode(255), primary_key=True),
     Column('GP', Integer),
     Column('W', Integer),
@@ -3247,11 +3228,11 @@ synergy_transition_team_defense = Table('synergy_transition_team_defense', metad
 
 
 traditional_boxscores = Table('traditional_boxscores', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255)),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Integer),
     Column('PLAYER_NAME', Unicode(255)),
     Column('START_POSITION', Unicode(255)),
     Column('COMMENT', Unicode(255)),
@@ -3278,8 +3259,8 @@ traditional_boxscores = Table('traditional_boxscores', metadata,
 )
 
 traditional_boxscores_team = Table('traditional_boxscores_team', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
-    Column('TEAM_ID', Unicode(255), primary_key=True),
+    Column('GAME_ID', Unicode(255)),
+    Column('TEAM_ID', Integer),
     Column('TEAM_NAME', Unicode(255)),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
@@ -3306,11 +3287,11 @@ traditional_boxscores_team = Table('traditional_boxscores_team', metadata,
 )
 
 usage_boxscores = Table('usage_boxscores', metadata,
-    Column('GAME_ID', Unicode(255), primary_key=True),
+    Column('GAME_ID', Unicode(255)),
     Column('TEAM_ID', Unicode(255)),
     Column('TEAM_ABBREVIATION', Unicode(255)),
     Column('TEAM_CITY', Unicode(255)),
-    Column('PLAYER_ID', Unicode(255), primary_key=True),
+    Column('PLAYER_ID', Unicode(255)),
     Column('PLAYER_NAME', Unicode(255)),
     Column('START_POSITION', Unicode(255)),
     Column('COMMENT', Unicode(255)),

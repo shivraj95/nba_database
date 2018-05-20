@@ -6,11 +6,33 @@ from dateutil.rrule import rrule, DAILY
 import logging
 import re
 import linecache
-from sqlalchemy import create_engine
+from sqlalchemy import sa
 from scrape import game_stats
 from storage import schema
-from scrape import helper
+from scrape import async_helper
 from utils import utils
+import asyncio
+import sqlalchemy 
+#from concurrent.futures import ProcessPoolExecutor
+#from aiopg.sa import create_pool
+from aiohttp import ClientSession
+
+async def get_games(start_date, end_date):
+    #start aiohttp connection
+    #make sure to set semaphores
+    #use asyncio gather to return results for each date
+    loop = asyncio.get_event_loop()
+    # create instance of Semaphore
+    sem = asyncio.Semaphore(10)
+    tasks = []
+    with ClientSession() as session:
+        for dt in rrule(DAILY, dtstart=start_date, until=end_date):
+            # pass Semaphore and session to every GET request
+        task = asyncio.ensure_future(async_helper.get_game_ids_for_date(sem, session, dt))
+        tasks.append(task)
+    game_ids = loop.run_until_complete(asyncio.gather(*tasks))
+
+    return game_ids 
 
 def store_data(connection, table, data):
     try:
@@ -52,7 +74,6 @@ def main():
         start_date = datetime.date(int(start_split[0]), int(start_split[1]), int(start_split[2]))
         end_date = datetime.date(int(end_split[0]), int(end_split[1]), int(end_split[2]))
 
-    #season = config["season"]
     # make sure season is valid format
     season_pattern = re.compile('\d{4}[-]\d{2}$')
     if season_pattern.match(season) == None:
@@ -74,8 +95,29 @@ def main():
     password = config['password']
     host = config['host']
     database = config['database']
-    engine = create_engine('mysql+pymysql://'+username+':'+password+'@'+host+'/'+database)
-    conn = engine.connect()
+
+    loop = asyncio.get_event_loop()
+
+    game_ids = loop.run_until_complete(get_games(start_date, end_date))
+    
+    print('Length of game_ids ', len(game_ids))
+    """
+    loop.run_until_complete(
+        asyncio.gather(
+            *(get_game_stats(*games) for games in game_ids)
+        )
+    )
+    with (yield from pool) as conn:
+        cur = yield from conn.cursor()
+        yield from cur.execute("SELECT 10")
+        # print(cur.description)
+        (r,) = yield from cur.fetchone()
+       assert r == 10
+    pool.close()
+    yield from pool.wait_closed()
+    engine = yield from create_engine('mysql+pymysql://'+username+':'+password+'@'+host+'/'+database)
+    with (yield from engine) as conn:
+
 
     #apply asynchronous methods
     for dt in rrule(DAILY, dtstart=start_date, until=end_date):
@@ -101,8 +143,6 @@ def main():
                 store_data(conn, schema.other_stats, game_data.other_stats())
                 store_data(conn, schema.officials, game_data.officials())
                 store_data(conn, schema.inactives, game_data.inactives())
-
-
-
+        """
 if __name__ == '__main__':
     main()

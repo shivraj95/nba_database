@@ -1,0 +1,7 @@
+{
+"host":"nbabigdata.cfshbsp4rjoc.us-east-2.rds.amazonaws.com",
+"username":"shivraj_nba",
+"password":"Karanpur1!",
+"database":"nbaData",
+"is_regular_season": 1
+}

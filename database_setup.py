@@ -9,6 +9,7 @@ host = config['host']
 database = config['database']
 
 engine = create_engine('mysql+pymysql://'+username+':'+password+'@'+host)
+#engine = create_engine('postgresql+psycopg2://'+username+':'+password+'@'+host)
 engine.execute("USE "+database)
 
 schema.metadata.create_all(engine)
